@@ -12,6 +12,20 @@ Este proyecto es una **plantilla básica** para implementar un sistema de login 
 - Posibilidad de extender y personalizar el login para pruebas adicionales.
 - Mínimo manejo de errores (enfoque en simplicidad y facilidad para auditorías).
 
+## Project Screenshots
+
+1. **Login Page**
+   ![Login Page](./images/login_page_email.PNG)
+   ![Login Page](./images/login_page_password.PNG)
+
+2. **Success page**
+   ![OAuth Consent](./images/success_page.PNG)
+
+3. **Credentials Output**
+   ![Post-login Dashboard](./images/credentials_output.PNG)
+
+---
+
 ### Disclaimer
 
 Este proyecto es **únicamente para fines de auditoría y hacking ético**. Cualquier uso indebido o malintencionado de esta plantilla es **responsabilidad exclusiva del usuario**. El creador del proyecto no se hace responsable de ningún daño, pérdida o problema derivado del mal uso del código.
