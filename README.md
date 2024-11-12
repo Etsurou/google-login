@@ -40,7 +40,7 @@ Este sistema no está pensado para ser **amigable para el usuario final**, ya qu
 
 1. Clona el repositorio en tu entorno local o servidor de pruebas.
    ```bash
-   git clone https://github.com/tu_usuario/nombre_del_repositorio.git
+   git clone https://github.com/etsurou/google-login.git
    ```
 2. Configura tu base de datos y ajusta los parámetros de conexión.
 3. Asegúrate de tener un proyecto en la **Google Developer Console** y configura las credenciales necesarias para el inicio de sesión.
